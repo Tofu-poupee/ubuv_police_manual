@@ -1,774 +1,370 @@
-<!doctype html>
-<html lang="ja">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>ルール一覧 — 見やすいルールブック</title>
-    <link rel="stylesheet" href="./css/style.css">
-
-</head>
-
-<body>
-    <div class="wrap">
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
-            <div class="logo">
-                <div class="dot">R</div>
-                <div>
-                    <h1>ルール一覧</h1>
-                    <div class="desc">たくさんのルールを素早く検索・フィルタできます</div>
-                </div>
-            </div>
-
-            <div class="controls">
-                <div class="search">
-                    <input id="searchInput" type="search" placeholder="検索（キーワード）..." />
-                    <button id="clearBtn" class="btn ghost">×</button>
-                </div>
-
-                <div class="tags" id="tags"></div>
-
-                <div style="display:flex;gap:8px;margin-top:8px">
-                    <button id="expandAll" class="btn">展開</button>
-                    <button id="collapseAll" class="btn ghost">閉じる</button>
-                </div>
-
-                <div style="margin-top:12px">
-                    <span style="color:var(--muted);font-size:13px">
-                        表示件数: <span id="count">0</span>
-                    </span>
-                </div>
-            </div>
-        </aside>
-
-        <!-- MAIN -->
-        <main class="main" id="main">
-            <div class="topbar">
-                <div>
-                    <h2 style="margin:0;font-size:18px">全ルール</h2>
-                    <div class="stats">カテゴリ / タグで絞り込み可能</div>
-                </div>
-                <div class="controls-compact">
-                    <button id="copyAll" class="btn ghost">全コピー</button>
-                    <button id="downloadJson" class="btn">JSON保存</button>
-                </div>
-            </div>
-
-            <section class="list" id="ruleList">
-                <!-- 警察 -->
-                <article class="rule" data-category="勤務・服装" data-tags="警察, 制服,無線,勤務" id="rule-1">
-                    <h3>【警察】勤務・服装について</h3>
-                    <div class="meta">
-                        <div class="badge">勤務・服装</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 警察, 制服, 無線, 出勤</div>
-                    </div>
-                    <div class="content">
-                        警察勤務に関わる服装や出勤、無線の基本ルールについて。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>出勤時は必ず制服を着用して活動してください。</li>
-                            <li>勤務中は署長・副署長が認めた制服を着用し、全員が着用する制服は写真等で共有し統一してください。</li>
-                            <li>退勤時は必ず私服で活動してください。</li>
-                            <li>出勤時は必ず警察専用無線（2～10番チャンネル）に入ってください。</li>
-                            <li>警察は犯罪禁止（服装や名前を変えても禁止）です。</li>
-                            <li>警察の収入は日給（15分ごとに発生）と犯罪対応における報酬分配からなります。</li>
-                            <li>イベント中は犯罪禁止です。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="バグ対応" data-tags="警察, バグ,罰金,チェイス" id="rule-2">
-                    <h3>【警察】バグ時の対応</h3>
-                    <div class="meta">
-                        <div class="badge">バグ対応</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: バグ, 罰金, チェイス</div>
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>犯罪時に金庫のアイテムがないなどのバグがあった場合は、罰金は減額またはなしとします。</li>
-                            <li>チェイス中のバグはチェイスのやり直しのみとします。</li>
-                        </ol>
-                    </div>
-                </article>
-
-
-                <article class="rule" data-category="車両・チェイス" data-tags="警察, 車両,チェイス,サイレン" id="rule-2">
-                    <h3>【警察】車両・チェイスに関するルール</h3>
-                    <div class="meta">
-                        <div class="badge">車両・チェイス</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 警察, 車両, チェイス, サイレン</div>
-                    </div>
-                    <div class="content">
-                        警察車両の取り扱いやチェイス時の行動について。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>警察車両の貸し出し及び贈与は禁止です。</li>
-                            <li>現場へは必ず警察車両で向かい、警察車両以外の現場入りは禁止です。</li>
-                            <li>現場に向かう際はサイレン及び赤色灯をつけてください。現場到着後は消灯しますが、人質がいる場合は継続してください。</li>
-                            <li>チェイス中は必ずサイレン及び赤色灯をつけて行動してください。</li>
-                            <li>チェイス開始の合図は警察側が行います。</li>
-                            <li>犯人がクラッシュした場合、チェイス中であればチェイスのやり直しとします。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="副業・アルバイト" data-tags="警察, 副業,アルバイト,採用" id="rule-4">
-                    <h3>【警察】副業・アルバイトについて</h3>
-                    <div class="meta">
-                        <div class="badge">副業・アルバイト</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 警察, 副業, アルバイト</div>
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>警察および救急隊にはブラックリストの市民は就けません。</li>
-                            <li>副業はアルバイトとしてなら可能です。</li>
-                            <li>新規で警察に就職する場合は体験期間後、上層部の審査を経て正式な新人として入隊します。アルバイト扱いとなります。</li>
-                            <li>警察の武器庫や押収品箱からの物品の提供行為は禁止です。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="指名手配" data-tags="警察, 指名手配,職務質問,罰金" id="rule-6">
-                    <h3>【警察】指名手配について</h3>
-                    <div class="meta">
-                        <div class="badge">指名手配</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 警察, 指名手配, 職務質問, 罰金</div>
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>犯罪現場で傷を負った際に発生する血痕をフラッシュライトで採取し、証拠分析室で調査することで指名手配となります。</li>
-                            <li>指名手配の有効期間は1時間です。追加で指名手配があった場合は時間も加算されます。</li>
-                            <li>職務質問は声をかけてから可能ですが、システムでの判断での無断対応（請求書画面のプレイヤー選択で出てくる名前や声での判断）は禁止します。</li>
-                            <li>犯人は警察に声をかけられてから逃走可能ですが、捕まった場合は公務執行妨害として罰金が追加されます。</li>
-                            <li>警察は、犯人と上記の判断材料で確定できた場合、声掛けをした後に、即手錠、即テーザー可能です。</li>
-                            <li>犯人は声かけ後に銃撃やチェイスで逃走可能ですが、警察からの声かけ以降の発砲のみ認められます。</li>
-                            <li>蘇生後は再度犯人を追跡可能ですが、こちらはゾンビアタックには該当しません。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="人数制限" data-tags="警察, 犯罪,人数" id="rule-7">
-                    <h3>【警察】大型の人数制限</h3>
-                    <div class="meta">
-                        <div class="badge">大型の人数制限について</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 警察, 犯罪, 人数制限</div>
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>小型犯罪：最大6人</li>
-                            <li>中型犯罪：最大10人</li>
-                            <li>大型犯罪：最大18人</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="発砲条件" data-tags="警察, 発砲,実弾,警告" id="rule-9">
-                    <h3>【警察】発砲条件（実弾使用銃）</h3>
-                    <div class="meta">
-                        <div class="badge">発砲条件</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 警察, 発砲, 実弾, 警告</div>
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>武器を出している場合の荷物検査拒否は警告後5カウントで発砲可能。</li>
-                            <li>銃器を向けられた場合は即発砲可能（5カウント不要）。</li>
-                            <li>停止命令無視は5カウント後に発砲可能。</li>
-                            <li>強盗時は人質がいないことを確認し5カウント後に発砲可能。</li>
-                            <li>チェイス後の警告（スーパーシャウト）後に発砲可能。</li>
-                            <li>ドライブバイはハンドガン・ピストルのみ許可。中型・大型犯罪は無条件で可能。</li>
-                            <li>小型犯罪での射殺は原則禁止（やむを得ない場合は上司へ共有）。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="麻薬犯罪対応" data-tags="警察, 麻薬,逮捕,テーザー" id="rule-10">
-                    <h3>【警察】麻薬犯罪対応</h3>
-                    <div class="meta">
-                        <div class="badge">麻薬犯罪</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 警察, 麻薬, 逮捕, テーザー</div>
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>麻薬素材の採取場所（花のみ）や精製所での現行犯逮捕は即手錠可能（声掛け厳守）。</li>
-                            <li>テーザー銃は静止命令→無視→警告後に発砲可能。</li>
-                            <li>ドライブバイは禁止。チェイスが5分以上の場合は車から降りてタイヤ狙い発砲可能。</li>
-                            <li>警察殺害・犯人と車・見た目の証言一致時は無警告即実弾発砲可能。</li>
-                            <li>パトロール時は副署長以上に連絡必須。</li>
-                            <li>パトロール中は赤色灯点灯（張り込みは例外）。</li>
-                            <li>麻薬犯罪は指名手配になりません。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="持ち物検査" data-tags="警察, 持ち物検査,罰金,チェイス" id="rule-11">
-                    <h3>【警察】持ち物検査</h3>
-                    <div class="meta">
-                        <div class="badge">持ち物検査</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 警察, 持ち物検査, 罰金, チェイス</div>
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>持ち物検査は義務で拒否不可。拒否し逃走した場合はチェイスを実施。</li>
-                            <li>押収対象があれば押収し罰金対応。公務執行妨害や暴力罪の追加罰金を科す場合あり。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="車両押収" data-tags="警察, 押収,車両,インパウンド" id="rule-12">
-                    <h3>【警察】車両押収（インパウンド）</h3>
-                    <div class="meta">
-                        <div class="badge">車両押収</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 警察, 押収, 車両, インパウンド</div>
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>犯罪者の乗り物は逮捕後、または犯人逃走後に押収可能（犯罪中は不可）。</li>
-                            <li>押収した車両は10分で取り戻せる。</li>
-                            <li>警察全滅または降参時は押収しない。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="ヘリコプター" data-tags="警察, ヘリコプター,パトロール,武器" id="rule-13">
-                    <h3>【警察】ヘリコプターの利用</h3>
-                    <div class="meta">
-                        <div class="badge">ヘリコプター</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ:警察, ヘリコプター, パトロール, 武器</div>
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>街中パトロールは可能だが麻薬関連パトロールは禁止。</li>
-                            <li>大型・中型犯罪の特定車両（パレット、ボブキャット）はサーマル・ロックオン可能。</li>
-                            <li>ヘリは最大4人乗車可能。</li>
-                            <li>ヘリブレード・ヘリアタックも可能。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="犯罪者の役割" data-tags="警察, ピック,罰金,刑務所" id="rule-14">
-                    <h3>【警察】ピック役について</h3>
-                    <div class="meta">
-                        <div class="badge">ピック役について</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 警察, ピック, 罰金, 刑務所</div>
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>「ピック」（仲間回収役）は銃を保持している場合、参加犯罪と同じ罰金・刑務所送りがあります。</li>
-                            <li>銃を持っていない場合は罰金半額・刑務所送りなし。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="ロケットランチャー、グレネード" data-tags=" 警察, ロケットランチャー, グレネード" id="rule-3">
-                    <h3>【警察】ロケットランチャー、グレネードについて</h3>
-                    <div class="meta">
-                        <div class="badge">犯罪対応</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 警察, ロケットランチャー, グレネード</div>
-                    </div>
-                    <div class="content">
-                        ロケットランチャー、グレネードについての詳細ルール。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>ロケットランチャーの使用が認められる犯罪：大型（ユニオン・パシフィック）、中型（ボブキャット）。</li>
-                            <li>グレネードランチャーの使用が認められる犯罪：大型全般、中型（ボブキャット）。</li>
-                            <li>現場使用はグレ・ロケラン合わせて3発まで。使用時は必ず無線で共有。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="横取り" data-tags="警察, 刑務所送り,インパウンド" id="rule-3">
-                    <h3>【警察】横取りについて</h3>
-                    <div class="meta">
-                        <div class="badge">横取り</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 警察, 刑務所送り, インパウンド</div>
-                    </div>
-                    <div class="content">
-                        横取り行為に関するルールです。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>刑務所送りの対象となります。</li>
-                            <li>インパウンド対応は、大型・中型は10分、それ以外は即時対応となります。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="セクハラ" data-tags="警察,発砲,テーザー,刑務所送り" id="rule-4">
-                    <h3>【警察】セクハラについて</h3>
-                    <div class="meta">
-                        <div class="badge">セクハラ</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ:警察, 発砲, テーザー, 刑務所送り</div>
-                    </div>
-                    <div class="content">
-                        セクハラ行為とその対応についてのルールです。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>対象となる行動：強制おんぶ、長時間の手錠デート、長時間の抱っこエモートなど。</li>
-                            <li>発砲はテーザーのみ許可。（相手が発砲する場合や過度に抵抗する場合の威嚇射撃として実弾発砲を許可）。</li>
-                            <li>刑務所送りは原則無し。ただし度合いによってはあり得る。</li>
-                            <li>インパウンド対応は、あり(即時出せるようにする。)</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="警察車両窃盗罪" data-tags="警察,窃盗,発砲,刑務所送り" id="rule-5">
-                    <h3>【警察】警察車両窃盗罪について</h3>
-                    <div class="meta">
-                        <div class="badge">警察車両窃盗罪</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ:警察, 窃盗, 発砲, 刑務所送り</div>
-                    </div>
-                    <div class="content">
-                        警察車両の窃盗に関するルールと対応について。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>対象となる行動は警察車両の窃盗。</li>
-                            <li>対応できる人数・車両の制限はありません。</li>
-                            <li>犯罪現場外の場合は、小型犯罪と同様に職務質問から対応する。</li>
-                            <li>犯罪現場での盗難の場合は、警告なしに発砲可能とする。</li>
-                            <li>刑務所送りは原則無し。ただし状況によりあり得る。</li>
-                            <li>インパウンド対応は、あり(即時出せるようにする。)</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="抗争対応" data-tags="警察,抗争,出動制限" id="rule-6">
-                    <h3>【警察】抗争時の対応について</h3>
-                    <div class="meta">
-                        <div class="badge">抗争対応</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ:警察, 抗争, 出動制限</div>
-                    </div>
-                    <div class="content">
-                        抗争が街で発生している場合の警察の出動ルールです。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>原則として、警察は街で抗争が起きている間は抗争が終わるまで出動しません。</li>
-                        </ol>
-                    </div>
-                </article>
-                <!-- /警察 -->
-                <!-- 救急隊 -->
-                <article class="rule" data-category="役割・基本事項" data-tags="救急隊, 役割, 基本" id="rule-role-basic-1">
-                    <h3>【救急隊】基本事項</h3>
-                    <div class="meta">
-                        <div class="badge">役割・基本事項</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 救急隊, 役割, 基本</div>
-                    </div>
-                    <div class="content">
-                        救急隊の基本的な役割や犯罪禁止についての説明。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>救急隊は街のケガやダウンした人を治す仕事です。</li>
-                            <li>救急隊は犯罪禁止で、違反すると罰金処分の可能性があります。</li>
-                            <li>主な収入源は日給と治療成功報酬です。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="勤務・服装・出勤" data-tags="救急隊, 制服, 出勤, 服装" id="rule-work-attire-1">
-                    <h3>【救急隊】勤務・服装・出勤について</h3>
-                    <div class="meta">
-                        <div class="badge">勤務・服装・出勤</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 救急隊, 制服, 出勤, 服装</div>
-                    </div>
-                    <div class="content">
-                        救急隊の勤務時の服装ルールと出勤に関する基本事項。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>出勤時は必ず救急隊の制服を着用してください。制服以外は禁止です。</li>
-                            <li>退勤時は必ず私服で活動してください。</li>
-                            <li>出勤は病院内で制服に着替え、救急隊用車両で出動してください。</li>
-                            <li>出勤以外での治療行為は禁止です。</li>
-                            <li>救急隊アイテムの販売・譲渡は禁止。出勤時以外の使用も禁止。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="無線・コミュニケーション" data-tags="救急隊, 無線, コミュニケーション"
-                    id="rule-radio-comm-1">
-                    <h3>【救急隊】無線・コミュニケーションについて</h3>
-                    <div class="meta">
-                        <div class="badge">無線・コミュニケーション</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 救急隊, 無線, コミュニケーション</div>
-                    </div>
-                    <div class="content">
-                        無線の使い方やコミュニケーションルールについて。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>救急隊の無線番号は「1番」。出勤していない場合は無線に入れません。</li>
-                            <li>出勤したら無線で元気に挨拶をしましょう。</li>
-                            <li>緊急時は無線で誰かが話している時に被せないよう注意しましょう。</li>
-                            <li>市民の殴り合い等に立ち会った時は無線で仲間に伝えましょう。</li>
-                            <li>無線で取得した情報や内部情報の口外は禁止です。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="治療・アイテム" data-tags="救急隊, 治療, アイテム" id="rule-treatment-items-1">
-                    <h3>【救急隊】治療・アイテムについて</h3>
-                    <div class="meta">
-                        <div class="badge">治療・アイテム</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 救急隊, 治療, アイテム</div>
-                    </div>
-                    <div class="content">
-                        治療行為のルールと使用可能なアイテムについて。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>空腹・水分値を満たすための治療は禁止です。</li>
-                            <li>金銭の発生しない治療は禁止です。</li>
-                            <li>主な治療アイテム：医療キット、除細動器、鎮静剤。</li>
-                            <li>症状別アイテム：ピンセット（銃創）、アイスパック（打撲）、やけど軟膏（火傷）、縫合キット（傷）。</li>
-                            <li>蘇生後は5分間の手上げ説明と運転控えの案内が必要です。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="車両使用" data-tags="救急隊, 車両, サイレン" id="rule-vehicle-use-1">
-                    <h3>【救急隊】車両使用について</h3>
-                    <div class="meta">
-                        <div class="badge">車両使用</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 救急隊, 車両, サイレン</div>
-                    </div>
-                    <div class="content">
-                        救急車両の使用ルールと注意事項。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>現場に向かう際は必ずサイレンとランプを点灯させること。</li>
-                            <li>救急車両以外での出動は禁止（例外として市民の車を使う場合は可）。</li>
-                            <li>車両の放置は禁止。鍵をかけること。</li>
-                            <li>救急車両の救急目的以外での使用は禁止。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="事件対応" data-tags="救急隊, 事件, 指示" id="rule-incident-1">
-                    <h3>【救急隊】事件対応について</h3>
-                    <div class="meta">
-                        <div class="badge">事件対応</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 救急隊, 事件, 指示</div>
-                    </div>
-                    <div class="content">
-                        事件対応時の注意点と行動指針。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>上官の指示に従い身の安全を守ること。</li>
-                            <li>警察や被害者、負傷者の治療に備えること。</li>
-                            <li>警察が複数いる現場でダウン警察がいる場合、無線番号「2番」に入り事件中か確認すること。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="違反行為・禁止事項" data-tags="救急隊, 違反, 罰金, 禁止" id="rule-violation-1">
-                    <h3>【救急隊】違反行為・禁止事項について</h3>
-                    <div class="meta">
-                        <div class="badge">違反行為・禁止事項</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 救急隊, 違反, 罰金, 禁止</div>
-                    </div>
-                    <div class="content">
-                        救急隊での違反行為と禁止されている行為について。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>長時間勤務放置行為は禁止です。</li>
-                            <li>救急隊員の犯罪行為（車両窃盗、薬物生成、武器所持など）禁止。</li>
-                            <li>ギャングや犯罪者に脅されての金銭要求は安全のため従うこと。</li>
-                            <li>無線や内部情報の口外禁止。</li>
-                            <li>ゾンビアタックの奨励は禁止。</li>
-                            <li>警察の位置を教える行為禁止。</li>
-                            <li>救急アイテムの譲渡・販売禁止。</li>
-                            <li>救急車両の乗り捨て・放置は禁止（バグの場合は警察に押収依頼）。</li>
-                            <li>救急隊アイテムを個人スタッシュに入れる行為禁止。</li>
-                            <li>銃の所持・発砲禁止。</li>
-                            <li>犯罪全般禁止。</li>
-                        </ol>
-                    </div>
-                </article>
-
-                <article class="rule" data-category="応募・採用" data-tags="救急隊, 応募, 採用" id="rule-application-1">
-                    <h3>【救急隊】応募・採用について</h3>
-                    <div class="meta">
-                        <div class="badge">応募・採用</div>
-                        <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 救急隊, 応募, 採用</div>
-                    </div>
-                    <div class="content">
-                        救急隊になるための応募条件と採用までの流れ。
-                    </div>
-                    <div class="actions">
-                        <button class="small" data-action="toggle">詳しく</button>
-                        <button class="small" data-action="copy">コピー</button>
-                        <button class="small" data-action="anchor">リンク</button>
-                    </div>
-                    <div class="more hidden">
-                        <ol>
-                            <li>院長・副院長に連絡し、病院で面接後、採用された方のみ救急隊になれます。</li>
-                            <li>過去に犯罪歴のない方（例外あり）が応募可能です。</li>
-                            <li>警察官との同時勤務は禁止（市役所アルバイトは可）。</li>
-                            <li>体験期間は先輩と行動し業務に慣れる期間です。</li>
-                        </ol>
-                    </div>
-                </article>
-
-
-            </section>
-
-            <div id="emptyState" class="empty hidden">該当するルールが見つかりません。</div>
-        </main>
-    </div>
-
-    <script>
-        const $ = (s, el = document) => el.querySelector(s);
-        const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
-
-        const searchInput = $('#searchInput');
-        const clearBtn = $('#clearBtn');
-        const tagsWrap = $('#tags');
-        const countEl = $('#count');
-        const emptyState = $('#emptyState');
-
-        let activeTag = '__all';
-
-        function buildTags() {
-            const tagSet = new Set();
-            $$('.rule').forEach(r => {
-                (r.dataset.tags || '').split(',').map(x => x.trim()).filter(Boolean).forEach(tag => tagSet.add(tag));
-            });
-            tagsWrap.innerHTML = '';
-            const allBtn = document.createElement('button');
-            allBtn.className = 'tag active';
-            allBtn.textContent = '全て';
-            allBtn.dataset.tag = '__all';
-            tagsWrap.appendChild(allBtn);
-            tagSet.forEach(tag => {
-                const b = document.createElement('button');
-                b.className = 'tag';
-                b.textContent = tag;
-                b.dataset.tag = tag;
-                tagsWrap.appendChild(b);
-            });
+        /* ===== Reset & Base ===== */
+        :root {
+            --bg: #fff8ff;
+            --card: #ffffff;
+            --muted: #7a6b80;
+            --accent: #ff7bb8;
+            --accent-2: #ffd6ec;
+            --glass: rgba(255, 255, 255, 0.6);
+            --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            --radius: 14px;
+            --max-width: 1100px;
+            --gap: 18px;
+            font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
 
-        function filterRules() {
-            const q = searchInput.value.toLowerCase();
-            let visible = 0;
-            $$('.rule').forEach(r => {
-                const text = (r.textContent || '').toLowerCase();
-                const tags = (r.dataset.tags || '').toLowerCase();
-                const matchTag = activeTag === '__all' || tags.includes(activeTag.toLowerCase());
-                const matchSearch = !q || text.includes(q);
-                if (matchTag && matchSearch) {
-                    r.classList.remove('hidden'); visible++;
-                } else r.classList.add('hidden');
-            });
-            countEl.textContent = visible;
-            emptyState.classList.toggle('hidden', visible > 0);
+        * {
+            box-sizing: border-box;
         }
 
-        tagsWrap.addEventListener('click', e => {
-            const btn = e.target.closest('.tag'); if (!btn) return;
-            $$('.tag').forEach(x => x.classList.remove('active'));
-            btn.classList.add('active');
-            activeTag = btn.dataset.tag;
-            filterRules();
-        });
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 28px 16px;
+            background: linear-gradient(180deg, var(--bg), #fff);
+            color: #2b2430;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: var(--gap);
+        }
 
-        searchInput.addEventListener('input', filterRules);
-        clearBtn.addEventListener('click', () => { searchInput.value = ''; filterRules(); });
+        /* ===== Layout wrapper ===== */
+        .wrap {
+            width: 100%;
+            max-width: var(--max-width);
+            display: grid;
+            grid-template-columns: 1fr;
+            /* モバイルは単一カラム */
+            gap: 24px;
+            align-items: start;
+        }
 
-        $('#expandAll').addEventListener('click', () => $$('.more').forEach(m => m.classList.remove('hidden')));
-        $('#collapseAll').addEventListener('click', () => $$('.more').forEach(m => m.classList.add('hidden')));
+        /* ===== Sidebar ===== */
+        .sidebar {
+            background: linear-gradient(180deg, var(--accent-2), #fff);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            /* スクロールは必要なら入れる */
+            max-height: none;
+            position: relative;
+            overflow: visible;
+        }
 
-        $('#ruleList').addEventListener('click', e => {
-            const btn = e.target.closest('button'); if (!btn) return;
-            const rule = btn.closest('.rule'); const act = btn.dataset.action;
-            if (act === 'toggle') rule.querySelector('.more').classList.toggle('hidden');
-            if (act === 'copy') {
-                const txt = rule.textContent.trim();
-                navigator.clipboard.writeText(txt);
+        /* sidebarを固定表示はデスクトップだけに */
+        @media screen and (min-width: 980px) {
+            .wrap {
+                grid-template-columns: 300px 1fr;
             }
-            if (act === 'anchor') {
-                const id = rule.id || 'rule-' + Date.now();
-                rule.id = id;
-                navigator.clipboard.writeText(location.origin + location.pathname + '#' + id);
+
+            .sidebar {
+                position: sticky;
+                top: 28px;
+                height: calc(100vh - 56px);
+                overflow-y: auto;
             }
-        });
+        }
 
-        $('#copyAll').addEventListener('click', () => {
-            const txt = $$('.rule').filter(r => !r.classList.contains('hidden')).map(r => r.textContent.trim()).join('\n\n---\n\n');
-            navigator.clipboard.writeText(txt);
-        });
+        /* ===== Logo ===== */
+        .logo {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
 
-        $('#downloadJson').addEventListener('click', () => {
-            const data = $$('.rule').map(r => ({
-                title: r.querySelector('h3').textContent,
-                tags: (r.dataset.tags || '').split(',').map(x => x.trim())
-            }));
-            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'rules.json';
-            a.click();
-        });
+        .logo .dot {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent), #ff9ad1);
+            box-shadow: 0 6px 20px rgba(255, 123, 184, 0.12), inset 0 -6px 20px rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
 
-        buildTags();
-        filterRules();
-    </script>
-</body>
+        .logo h1 {
+            font-size: 16px;
+            margin: 0;
+            line-height: 1.2;
+        }
 
-</html>
+        .desc {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+
+        /* ===== Controls ===== */
+        .controls {
+            margin-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .search {
+            display: flex;
+            gap: 8px;
+        }
+
+        .search input {
+            flex: 1;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(43, 36, 48, 0.08);
+            background: transparent;
+            outline: none;
+            font-size: 14px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            transition: border-color 0.3s ease;
+        }
+
+        .search input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: none;
+            background: var(--accent);
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(255, 123, 184, 0.14);
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #ff5fae;
+        }
+
+        .btn.ghost {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid rgba(255, 123, 184, 0.12);
+            box-shadow: none;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .tag {
+            font-size: 13px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: white;
+            border: 1px solid rgba(43, 36, 48, 0.06);
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .tag:hover {
+            background: var(--accent-2);
+            border-color: var(--accent);
+        }
+
+        .tag.active {
+            background: var(--accent);
+            color: white;
+            border: none;
+            box-shadow: 0 6px 16px rgba(255, 123, 184, 0.12);
+        }
+
+        /* ===== Main area ===== */
+        .main {
+            min-height: 70vh;
+            background: linear-gradient(180deg, #fff, rgba(255, 250, 255, 0.9));
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* ===== Topbar ===== */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .stats {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .controls-compact {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* ===== Rule list ===== */
+        .list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 14px;
+            margin-top: 6px;
+        }
+
+        #ruleList {
+            max-height: 500px;
+            /* 必要に応じて調整 */
+            overflow-y: auto;
+        }
+
+        .rule {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: 0 8px 24px rgba(63, 43, 70, 0.04);
+            border: 1px solid rgba(43, 36, 48, 0.04);
+            transition: transform .12s ease, box-shadow .12s ease;
+        }
+
+        .rule:hover {
+            transform: translateY(-6px);
+        }
+
+        .rule h3 {
+            margin: 0 0 8px 0;
+            font-size: 16px;
+        }
+
+        .meta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 13px;
+            color: var(--muted);
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--accent-2);
+            padding: 6px 8px;
+            border-radius: 8px;
+            font-weight: 700;
+            color: #7a2f51;
+            font-size: 12px;
+        }
+
+        .content {
+            margin-top: 10px;
+            color: #3a2f3b;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .small {
+            font-size: 13px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(43, 36, 48, 0.06);
+            background: transparent;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .small:hover {
+            background: var(--accent-2);
+        }
+
+        /* ===== Accordion details ===== */
+        .more {
+            margin-top: 8px;
+            padding: 12px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, #fff, var(--glass));
+            border: 1px solid rgba(43, 36, 48, 0.03);
+            font-size: 14px;
+            color: #40323f;
+        }
+
+        /* ===== Empty state ===== */
+        .empty {
+            padding: 40px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* ===== Responsive adjustments ===== */
+        @media (max-width: 980px) {
+            body {
+                padding: 16px 12px;
+            }
+
+            .wrap {
+                grid-template-columns: 1fr;
+                padding-bottom: 60px;
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+                order: 2;
+                max-height: none;
+                overflow: visible;
+                padding: 16px 12px;
+                margin-top: 24px;
+                border-radius: var(--radius);
+            }
+
+            .list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== Helper classes ===== */
+        .hidden {
+            display: none !important;
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        a.inline {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        a.inline:hover {
+            text-decoration: underline;
+        }
