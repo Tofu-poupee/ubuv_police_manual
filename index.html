@@ -262,6 +262,7 @@
             cursor: pointer
         }
 
+        /* ===== Accordion details ===== */
         .more {
             margin-top: 8px;
             padding: 12px;
@@ -272,6 +273,7 @@
             color: #40323f
         }
 
+        /* ===== Empty state ===== */
         .empty {
             padding: 40px;
             text-align: center;
@@ -279,6 +281,7 @@
             font-size: 15px
         }
 
+        /* ===== Responsive ===== */
         @media (max-width:980px) {
             .wrap {
                 grid-template-columns: 1fr;
@@ -292,6 +295,7 @@
             }
         }
 
+        /* ===== helper ===== */
         .hidden {
             display: none
         }
@@ -320,16 +324,20 @@
                     <div class="desc">たくさんのルールを素早く検索・フィルタできます</div>
                 </div>
             </div>
+
             <div class="controls">
                 <div class="search">
                     <input id="searchInput" type="search" placeholder="検索（キーワード）..." />
                     <button id="clearBtn" class="btn ghost">×</button>
                 </div>
+
                 <div class="tags" id="tags"></div>
+
                 <div style="display:flex;gap:8px;margin-top:8px">
                     <button id="expandAll" class="btn">展開</button>
                     <button id="collapseAll" class="btn ghost">閉じる</button>
                 </div>
+
                 <div style="margin-top:12px">
                     <span style="color:var(--muted);font-size:13px">
                         表示件数: <span id="count">0</span>
@@ -337,6 +345,7 @@
                 </div>
             </div>
         </aside>
+
         <!-- MAIN -->
         <main class="main" id="main">
             <div class="topbar">
@@ -346,19 +355,21 @@
                 </div>
                 <div class="controls-compact">
                     <button id="copyAll" class="btn ghost">全コピー</button>
+                    <button id="downloadJson" class="btn">JSON保存</button>
                 </div>
             </div>
+
             <section class="list" id="ruleList">
                 <!-- サンプル -->
-                <article class="rule" data-category="運転" data-tags="罰金,手続き" id="rule-1">
-                    <h3> 基本ルール</h3>
+                <article class="rule" data-category="勤務・服装" data-tags="制服,無線,勤務" id="rule-1">
+                    <h3>勤務・服装について</h3>
                     <div class="meta">
-                        <div class="badge">運転</div>
-                        <div>更新: 2025-8-9</div>
-                        <div class="muted">タグ: 基本, 服装</div>
+                        <div class="badge">勤務・服装</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 制服, 無線, 出勤</div>
                     </div>
                     <div class="content">
-                        警察勤務中の基本ルールについて。
+                        警察勤務に関わる服装や出勤、無線の基本ルールについて。
                     </div>
                     <div class="actions">
                         <button class="small" data-action="toggle">詳しく</button>
@@ -367,29 +378,24 @@
                     </div>
                     <div class="more hidden">
                         <ol>
-                            <li>出勤時は必ず制服を着用し、警察専用無線（2〜10番）に入ること。</li>
-                            <li>退勤時は必ず私服で活動すること。</li>
-                            <li>警察車両の貸し出し・贈与は禁止。</li>
-                            <li>現場へ向かう際は必ず警察車両を使用すること（警察車両以外での現場向かいは禁止）。</li>
-                            <li>現場に向かう時はサイレン・赤色灯を点灯（現場到着後は消灯／人質がいる場合のみ継続）。</li>
-                            <li>チェイス中はサイレン・赤色灯を点灯。</li>
-                            <li>チェイス開始の合図は警察が行う。</li>
-                            <li>副業はアルバイトとしてのみ可能。ただし救急隊・警察にはブラック市民不可。</li>
-                            <li>イベント中は犯罪禁止。</li>
+                            <li>出勤時は必ず制服を着用して活動してください。</li>
+                            <li>勤務中は署長・副署長が認めた制服を着用し、全員が着用する制服は写真等で共有し統一してください。</li>
+                            <li>退勤時は必ず私服で活動してください。</li>
+                            <li>出勤時は必ず警察専用無線（2～10番チャンネル）に入ってください。</li>
                         </ol>
                     </div>
                 </article>
 
 
-                <!-- <article class="rule" data-category="運転" data-tags="罰金,手続き" id="rule-1">
-                    <h3>速度違反の処理</h3>
+                <article class="rule" data-category="車両・チェイス" data-tags="車両,チェイス,サイレン" id="rule-2">
+                    <h3>警察車両・チェイスに関するルール</h3>
                     <div class="meta">
-                        <div class="badge">運転</div>
-                        <div>更新: 2024-10-20</div>
-                        <div class="muted">タグ: 罰金, 手続き</div>
+                        <div class="badge">車両・チェイス</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 車両, チェイス, サイレン</div>
                     </div>
                     <div class="content">
-                        指定の速度を超えた場合の流れと罰則について。
+                        警察車両の取り扱いやチェイス時の行動について。
                     </div>
                     <div class="actions">
                         <button class="small" data-action="toggle">詳しく</button>
@@ -398,23 +404,26 @@
                     </div>
                     <div class="more hidden">
                         <ol>
-                            <li>停止して身分確認</li>
-                            <li>証票記録</li>
-                            <li>必要に応じて反則金または検察へ</li>
+                            <li>警察車両の貸し出し及び贈与は禁止です。</li>
+                            <li>現場へは必ず警察車両で向かい、警察車両以外の現場入りは禁止です。</li>
+                            <li>現場に向かう際はサイレン及び赤色灯をつけてください。現場到着後は消灯しますが、人質がいる場合は継続してください。</li>
+                            <li>チェイス中は必ずサイレン及び赤色灯をつけて行動してください。</li>
+                            <li>チェイス開始の合図は警察側が行います。</li>
+                            <li>犯人がクラッシュした場合、チェイス中であればチェイスのやり直しとします。</li>
                         </ol>
                     </div>
                 </article>
 
 
-                <article class="rule" data-category="運転" data-tags="罰金,手続き" id="rule-1">
-                    <h3>速度違反の処理</h3>
+                <article class="rule" data-category="犯罪対応・処罰" data-tags="指名手配,発砲,罰金" id="rule-3">
+                    <h3>犯罪対応と処罰に関するルール</h3>
                     <div class="meta">
-                        <div class="badge">運転</div>
-                        <div>更新: 2024-10-20</div>
-                        <div class="muted">タグ: 罰金, 手続き</div>
+                        <div class="badge">犯罪対応</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 指名手配, 発砲, 罰金</div>
                     </div>
                     <div class="content">
-                        指定の速度を超えた場合の流れと罰則について。
+                        犯罪者対応や指名手配、発砲条件についての詳細ルール。
                     </div>
                     <div class="actions">
                         <button class="small" data-action="toggle">詳しく</button>
@@ -423,21 +432,29 @@
                     </div>
                     <div class="more hidden">
                         <ol>
-                            <li>停止して身分確認</li>
-                            <li>証票記録</li>
-                            <li>必要に応じて反則金または検察へ</li>
+                            <li>犯罪現場で負傷した際に出る血痕をフラッシュライトで採取し証拠分析を行った時点で指名手配となる。指名手配は1時間で、追加指名手配があれば延長される。</li>
+                            <li>声をかけてから職務質問が可能。ただしシステムでの名前や声による判断は禁止。</li>
+                            <li>犯人は警察に声をかけられてから逃走や発砲が可能。警察に追われ逮捕された場合は公務執行妨害の罰金が追加される。警察は声掛け後に即手錠・テーザーが可能。</li>
+                            <li>警察と犯人は、声掛け後の発砲が条件であり、その際に「声が聞こえなかった」などの発言はしない。蘇生後は犯人を追うことが可能であり、ゾンビアタックには該当しない。</li>
+                            <li>発砲条件（実弾仕様銃）は、武器を出している場合の荷物検査拒否（警告後5カウント）、銃器を向けられた場合、停止命令無視（5カウント）など。</li>
+                            <li>小型犯罪での射殺は禁止。ただしやむを得ない場合は必ず上司へ共有。</li>
+                            <li>麻薬犯罪で現行犯を発見した場合は即手錠可能。パトロール時は副署長以上に必ず連絡し、赤色灯を点灯（張り込み時は例外）。麻薬犯罪は指名手配にならない。</li>
+                            <li>持ち物検査は義務で拒否不可。拒否逃走時はチェイスと追加罰金が発生。</li>
+                            <li>犯罪者の乗り物押収は逮捕後や犯人逃走後に可能。押収解除は10分以内。警察全滅または降参時は押収しない。</li>
+                            <li>ヘリコプターは街中パトロール可能だが麻薬関連は禁止。大型・中型犯罪の一部でサーマルやロケットランチャー使用が認められている。使用弾数は3発までで無線共有必須。</li>
                         </ol>
                     </div>
                 </article>
-                <article class="rule" data-category="運転" data-tags="罰金,手続き" id="rule-1">
-                    <h3>速度違反の処理</h3>
+
+                <article class="rule" data-category="横取り" data-tags="刑務所送り,インパウンド" id="rule-3">
+                    <h3>横取りについて</h3>
                     <div class="meta">
-                        <div class="badge">運転</div>
-                        <div>更新: 2024-10-20</div>
-                        <div class="muted">タグ: 罰金, 手続き</div>
+                        <div class="badge">横取り</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 刑務所送り, インパウンド</div>
                     </div>
                     <div class="content">
-                        指定の速度を超えた場合の流れと罰則について。
+                        横取り行為に関するルールです。
                     </div>
                     <div class="actions">
                         <button class="small" data-action="toggle">詳しく</button>
@@ -446,13 +463,90 @@
                     </div>
                     <div class="more hidden">
                         <ol>
-                            <li>停止して身分確認</li>
-                            <li>証票記録</li>
-                            <li>必要に応じて反則金または検察へ</li>
+                            <li>刑務所送りの対象となります。</li>
+                            <li>インパウンド対応は、大型・中型は10分、それ以外は即時対応となります。</li>
                         </ol>
                     </div>
-                </article> -->
+                </article>
+
+                <article class="rule" data-category="セクハラ" data-tags="発砲,テーザー,刑務所送り" id="rule-4">
+                    <h3>セクハラについて</h3>
+                    <div class="meta">
+                        <div class="badge">セクハラ</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 発砲, テーザー, 刑務所送り</div>
+                    </div>
+                    <div class="content">
+                        セクハラ行為とその対応についてのルールです。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>対象となる行動：強制おんぶ、長時間の手錠デート、長時間の抱っこエモートなど。</li>
+                            <li>発砲はテーザーのみ許可。（相手が発砲する場合や過度に抵抗する場合の威嚇射撃として実弾発砲を許可）。</li>
+                            <li>刑務所送りは原則無し。ただし度合いによってはあり得る。</li>
+                            <li>インパウンド対応は即時行うこと。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="警察車両窃盗罪" data-tags="窃盗,発砲,刑務所送り" id="rule-5">
+                    <h3>警察車両窃盗罪について</h3>
+                    <div class="meta">
+                        <div class="badge">警察車両窃盗罪</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 窃盗, 発砲, 刑務所送り</div>
+                    </div>
+                    <div class="content">
+                        警察車両の窃盗に関するルールと対応について。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>対象となる行動は警察車両の窃盗。</li>
+                            <li>対応できる人数・車両の制限はありません。</li>
+                            <li>犯罪現場外の場合は、小型犯罪と同様に職務質問から対応する。</li>
+                            <li>犯罪現場での盗難の場合は、警告なしに発砲可能とする。</li>
+                            <li>刑務所送りは原則無し。ただし状況によりあり得る。</li>
+                            <li>インパウンド対応は即時行うこと。</li>
+                        </ol>
+                    </div>
+                </article>
+
+
+                <article class="rule" data-category="抗争対応" data-tags="抗争,出動制限" id="rule-6">
+                    <h3>抗争時の対応について</h3>
+                    <div class="meta">
+                        <div class="badge">抗争対応</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 抗争, 出動制限</div>
+                    </div>
+                    <div class="content">
+                        抗争が街で発生している場合の警察の出動ルールです。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>原則として、警察は街で抗争が起きている間は抗争が終わるまで出動しません。</li>
+                        </ol>
+                    </div>
+                </article>
+
+
             </section>
+
             <div id="emptyState" class="empty hidden">該当するルールが見つかりません。</div>
         </main>
     </div>
@@ -460,11 +554,13 @@
     <script>
         const $ = (s, el = document) => el.querySelector(s);
         const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+
         const searchInput = $('#searchInput');
         const clearBtn = $('#clearBtn');
         const tagsWrap = $('#tags');
         const countEl = $('#count');
         const emptyState = $('#emptyState');
+
         let activeTag = '__all';
 
         function buildTags() {
@@ -535,6 +631,18 @@
         $('#copyAll').addEventListener('click', () => {
             const txt = $$('.rule').filter(r => !r.classList.contains('hidden')).map(r => r.textContent.trim()).join('\n\n---\n\n');
             navigator.clipboard.writeText(txt);
+        });
+
+        $('#downloadJson').addEventListener('click', () => {
+            const data = $$('.rule').map(r => ({
+                title: r.querySelector('h3').textContent,
+                tags: (r.dataset.tags || '').split(',').map(x => x.trim())
+            }));
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'rules.json';
+            a.click();
         });
 
         buildTags();
