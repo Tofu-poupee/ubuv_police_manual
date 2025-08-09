@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
+body {
+  margin: 0;
+  padding: 20px;
+  background-color: #f0f8ff;
+  font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+  color: #333;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 12px;
+  overflow-x: auto;
+}
+
+/* タイトル */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  text-align: center;
+  margin: 0.5rem auto 2rem;
+  position: relative;
+  z-index: 1;
+  color: #1e1e1e;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(100, 100, 100, 0.3), 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+h1::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 95%;
+  height: 110%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  z-index: -1;
+  box-shadow: 0 4px 16px rgba(160, 160, 160, 0.25);
+  backdrop-filter: blur(2.5px);
+}
+
+h1 span {
+  display: inline-block;
+  background: linear-gradient(90deg, #4a7ebf, #6ca8e4, #a5d6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0.4em 1em;
+  font-weight: bold;
+}
+
+/* 合計欄 */
+.totals {
+  background: #e8f4ff;
+  border: 2px solid #a0c8f0;
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 6px rgba(100, 150, 200, 0.15);
+}
+
+.totals p {
+  margin: 0.5em 0;
+  color: #225588;
+}
+
+.totals span {
+  font-weight: bold;
+  font-size: 1.6rem;
+  color: #114477;
+}
+
+/* 表の外枠（縦スクロールエリア） */
+.table-wrapper {
+  overflow-y: auto;
+  max-height: 400px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+/* 表全体 */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  font-size: 1rem;
+  table-layout: auto;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: #b3d9ff;
+  color: #003366;
+  font-weight: bold;
+  z-index: 2;
+  border: 1px solid #d3e7f9;
+}
+
+th,
+td {
+  padding: 12px 8px;
+  text-align: center;
+  border: 1px solid #d3e7f9;
+  vertical-align: middle;
+}
+
+tr:nth-child(even) td {
+  background-color: #f7fbff;
+}
+
+/* 内容列（4列目）のみ折り返し */
+td:nth-child(4) {
+  text-align: left;
+  word-break: break-word;
+}
+
+/* チェック列（1列目）は文字幅に合わせる */
+td:nth-child(1),
+th:nth-child(1) {
+  width: 5%;
+  white-space: nowrap;
+}
+
+td:nth-child(3),
+th:nth-child(3) {
+  width: 8%;
+  white-space: nowrap;
+}
+
+/* チェックボックス */
+input[type="checkbox"] {
+  transform: scale(1.2);
+  accent-color: #6ea5ff;
+  cursor: pointer;
+}
+
+/* コピーライト */
+footer {
+  width: 100%;
+  margin: 1% auto 0;
+  text-align: center;
+}
+
+/* レスポンシブ対応 */
+@media screen and (max-width: 768px) {
+
+  table,
+  th,
+  td {
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .totals span {
+    font-size: 1.3rem;
+  }
+
+  h1 span {
+    padding: 0.3em 0.5em;
+  }
+
+  .table-wrapper {
+    max-height: 60vh;
+  }
+
+  .sp_br {
+display: none;
+  }
+
+}
