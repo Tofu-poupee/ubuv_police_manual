@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ルール一覧 — 見やすいルールブック</title>
+    <style>
+        /* ===== Reset & Base ===== */
+        :root {
+            --bg: #fff8ff;
+            --card: #ffffff;
+            --muted: #7a6b80;
+            --accent: #ff7bb8;
+            --accent-2: #ffd6ec;
+            --glass: rgba(255, 255, 255, 0.6);
+            --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            --radius: 14px;
+            --max-width: 1100px;
+            --gap: 18px;
+            font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, var(--bg), #fff);
+            color: #2b2430;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: var(--gap);
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: var(--max-width);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        /* ===== Sidebar ===== */
+        .sidebar {
+            position: sticky;
+            top: 28px;
+            height: calc(100vh - 56px);
+            overflow: auto;
+            background: linear-gradient(180deg, var(--accent-2), #fff);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .logo {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .logo .dot {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent), #ff9ad1);
+            box-shadow: 0 6px 20px rgba(255, 123, 184, 0.12), inset 0 -6px 20px rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .logo h1 {
+            font-size: 16px;
+            margin: 0
+        }
+
+        .desc {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 6px
+        }
+
+        /* ===== Controls ===== */
+        .controls {
+            margin-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+
+        .search {
+            display: flex;
+            gap: 8px;
+        }
+
+        .search input {
+            flex: 1;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(43, 36, 48, 0.08);
+            background: transparent;
+            outline: none;
+            font-size: 14px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: none;
+            background: var(--accent);
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(255, 123, 184, 0.14);
+        }
+
+        .btn.ghost {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid rgba(255, 123, 184, 0.12);
+            box-shadow: none
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 6px
+        }
+
+        .tag {
+            font-size: 13px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: white;
+            border: 1px solid rgba(43, 36, 48, 0.06);
+            cursor: pointer
+        }
+
+        .tag.active {
+            background: var(--accent);
+            color: white;
+            border: none;
+            box-shadow: 0 6px 16px rgba(255, 123, 184, 0.12);
+        }
+
+        /* ===== Main area ===== */
+        .main {
+            min-height: 70vh;
+            background: linear-gradient(180deg, #fff, rgba(255, 250, 255, 0.9));
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px
+        }
+
+        .stats {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .controls-compact {
+            display: flex;
+            gap: 8px
+        }
+
+        /* ===== Rule list ===== */
+        .list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 14px;
+            margin-top: 6px
+        }
+
+        .rule {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: 0 8px 24px rgba(63, 43, 70, 0.04);
+            border: 1px solid rgba(43, 36, 48, 0.04);
+            transition: transform .12s ease, box-shadow .12s ease;
+        }
+
+        .rule:hover {
+            transform: translateY(-6px)
+        }
+
+        .rule h3 {
+            margin: 0 0 8px 0;
+            font-size: 16px
+        }
+
+        .meta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 13px;
+            color: var(--muted);
+            flex-wrap: wrap
+        }
+
+        .badge {
+            background: var(--accent-2);
+            padding: 6px 8px;
+            border-radius: 8px;
+            font-weight: 700;
+            color: #7a2f51;
+            font-size: 12px
+        }
+
+        .content {
+            margin-top: 10px;
+            color: #3a2f3b;
+            line-height: 1.5;
+            font-size: 14px
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px
+        }
+
+        .small {
+            font-size: 13px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(43, 36, 48, 0.06);
+            background: transparent;
+            cursor: pointer
+        }
+
+        /* ===== Accordion details ===== */
+        .more {
+            margin-top: 8px;
+            padding: 12px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, #fff, var(--glass));
+            border: 1px solid rgba(43, 36, 48, 0.03);
+            font-size: 14px;
+            color: #40323f
+        }
+
+        /* ===== Empty state ===== */
+        .empty {
+            padding: 40px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 15px
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width:980px) {
+            .wrap {
+                grid-template-columns: 1fr;
+                padding-bottom: 60px
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+                order: 2
+            }
+        }
+
+        /* ===== helper ===== */
+        .hidden {
+            display: none
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        a.inline {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="dot">R</div>
+                <div>
+                    <h1>ルール一覧</h1>
+                    <div class="desc">たくさんのルールを素早く検索・フィルタできます</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="search">
+                    <input id="searchInput" type="search" placeholder="検索（キーワード）..." />
+                    <button id="clearBtn" class="btn ghost">×</button>
+                </div>
+
+                <div class="tags" id="tags"></div>
+
+                <div style="display:flex;gap:8px;margin-top:8px">
+                    <button id="expandAll" class="btn">展開</button>
+                    <button id="collapseAll" class="btn ghost">閉じる</button>
+                </div>
+
+                <div style="margin-top:12px">
+                    <span style="color:var(--muted);font-size:13px">
+                        表示件数: <span id="count">0</span>
+                    </span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main" id="main">
+            <div class="topbar">
+                <div>
+                    <h2 style="margin:0;font-size:18px">全ルール</h2>
+                    <div class="stats">カテゴリ / タグで絞り込み可能</div>
+                </div>
+                <div class="controls-compact">
+                    <button id="copyAll" class="btn ghost">全コピー</button>
+                    <button id="downloadJson" class="btn">JSON保存</button>
+                </div>
+            </div>
+
+            <section class="list" id="ruleList">
+                <!-- サンプル -->
+                <article class="rule" data-category="運転" data-tags="罰金,手続き" id="rule-1">
+                    <h3> 基本ルール</h3>
+                    <div class="meta">
+                        <div class="badge">運転</div>
+                        <div>更新: 2025-8-9</div>
+                        <div class="muted">タグ: 基本, 服装</div>
+                    </div>
+                    <div class="content">
+                        警察勤務中の基本ルールについて。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>出勤時は必ず制服を着用し、警察専用無線（2〜10番）に入ること。</li>
+                            <li>退勤時は必ず私服で活動すること。</li>
+                            <li>警察車両の貸し出し・贈与は禁止。</li>
+                            <li>現場へ向かう際は必ず警察車両を使用すること（警察車両以外での現場向かいは禁止）。</li>
+                            <li>現場に向かう時はサイレン・赤色灯を点灯（現場到着後は消灯／人質がいる場合のみ継続）。</li>
+                            <li>チェイス中はサイレン・赤色灯を点灯。</li>
+                            <li>チェイス開始の合図は警察が行う。</li>
+                            <li>副業はアルバイトとしてのみ可能。ただし救急隊・警察にはブラック市民不可。</li>
+                            <li>イベント中は犯罪禁止。</li>
+                        </ol>
+                    </div>
+                </article>
+
+
+                <article class="rule" data-category="運転" data-tags="罰金,手続き" id="rule-1">
+                    <h3>速度違反の処理</h3>
+                    <div class="meta">
+                        <div class="badge">運転</div>
+                        <div>更新: 2024-10-20</div>
+                        <div class="muted">タグ: 罰金, 手続き</div>
+                    </div>
+                    <div class="content">
+                        指定の速度を超えた場合の流れと罰則について。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>停止して身分確認</li>
+                            <li>証票記録</li>
+                            <li>必要に応じて反則金または検察へ</li>
+                        </ol>
+                    </div>
+                </article>
+
+
+                <article class="rule" data-category="運転" data-tags="罰金,手続き" id="rule-1">
+                    <h3>速度違反の処理</h3>
+                    <div class="meta">
+                        <div class="badge">運転</div>
+                        <div>更新: 2024-10-20</div>
+                        <div class="muted">タグ: 罰金, 手続き</div>
+                    </div>
+                    <div class="content">
+                        指定の速度を超えた場合の流れと罰則について。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>停止して身分確認</li>
+                            <li>証票記録</li>
+                            <li>必要に応じて反則金または検察へ</li>
+                        </ol>
+                    </div>
+                </article>
+                <article class="rule" data-category="運転" data-tags="罰金,手続き" id="rule-1">
+                    <h3>速度違反の処理</h3>
+                    <div class="meta">
+                        <div class="badge">運転</div>
+                        <div>更新: 2024-10-20</div>
+                        <div class="muted">タグ: 罰金, 手続き</div>
+                    </div>
+                    <div class="content">
+                        指定の速度を超えた場合の流れと罰則について。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>停止して身分確認</li>
+                            <li>証票記録</li>
+                            <li>必要に応じて反則金または検察へ</li>
+                        </ol>
+                    </div>
+                </article>
+            </section>
+
+            <div id="emptyState" class="empty hidden">該当するルールが見つかりません。</div>
+        </main>
+    </div>
+
+    <script>
+        const $ = (s, el = document) => el.querySelector(s);
+        const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+
+        const searchInput = $('#searchInput');
+        const clearBtn = $('#clearBtn');
+        const tagsWrap = $('#tags');
+        const countEl = $('#count');
+        const emptyState = $('#emptyState');
+
+        let activeTag = '__all';
+
+        function buildTags() {
+            const tagSet = new Set();
+            $$('.rule').forEach(r => {
+                (r.dataset.tags || '').split(',').map(x => x.trim()).filter(Boolean).forEach(tag => tagSet.add(tag));
+            });
+            tagsWrap.innerHTML = '';
+            const allBtn = document.createElement('button');
+            allBtn.className = 'tag active';
+            allBtn.textContent = '全て';
+            allBtn.dataset.tag = '__all';
+            tagsWrap.appendChild(allBtn);
+            tagSet.forEach(tag => {
+                const b = document.createElement('button');
+                b.className = 'tag';
+                b.textContent = tag;
+                b.dataset.tag = tag;
+                tagsWrap.appendChild(b);
+            });
+        }
+
+        function filterRules() {
+            const q = searchInput.value.toLowerCase();
+            let visible = 0;
+            $$('.rule').forEach(r => {
+                const text = (r.textContent || '').toLowerCase();
+                const tags = (r.dataset.tags || '').toLowerCase();
+                const matchTag = activeTag === '__all' || tags.includes(activeTag.toLowerCase());
+                const matchSearch = !q || text.includes(q);
+                if (matchTag && matchSearch) {
+                    r.classList.remove('hidden'); visible++;
+                } else r.classList.add('hidden');
+            });
+            countEl.textContent = visible;
+            emptyState.classList.toggle('hidden', visible > 0);
+        }
+
+        tagsWrap.addEventListener('click', e => {
+            const btn = e.target.closest('.tag'); if (!btn) return;
+            $$('.tag').forEach(x => x.classList.remove('active'));
+            btn.classList.add('active');
+            activeTag = btn.dataset.tag;
+            filterRules();
+        });
+
+        searchInput.addEventListener('input', filterRules);
+        clearBtn.addEventListener('click', () => { searchInput.value = ''; filterRules(); });
+
+        $('#expandAll').addEventListener('click', () => $$('.more').forEach(m => m.classList.remove('hidden')));
+        $('#collapseAll').addEventListener('click', () => $$('.more').forEach(m => m.classList.add('hidden')));
+
+        $('#ruleList').addEventListener('click', e => {
+            const btn = e.target.closest('button'); if (!btn) return;
+            const rule = btn.closest('.rule'); const act = btn.dataset.action;
+            if (act === 'toggle') rule.querySelector('.more').classList.toggle('hidden');
+            if (act === 'copy') {
+                const txt = rule.textContent.trim();
+                navigator.clipboard.writeText(txt);
+            }
+            if (act === 'anchor') {
+                const id = rule.id || 'rule-' + Date.now();
+                rule.id = id;
+                navigator.clipboard.writeText(location.origin + location.pathname + '#' + id);
+            }
+        });
+
+        $('#copyAll').addEventListener('click', () => {
+            const txt = $$('.rule').filter(r => !r.classList.contains('hidden')).map(r => r.textContent.trim()).join('\n\n---\n\n');
+            navigator.clipboard.writeText(txt);
+        });
+
+        $('#downloadJson').addEventListener('click', () => {
+            const data = $$('.rule').map(r => ({
+                title: r.querySelector('h3').textContent,
+                tags: (r.dataset.tags || '').split(',').map(x => x.trim())
+            }));
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'rules.json';
+            a.click();
+        });
+
+        buildTags();
+        filterRules();
+    </script>
+</body>
+
+</html>
