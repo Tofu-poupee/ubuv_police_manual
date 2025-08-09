@@ -6,368 +6,370 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>ルール一覧 — 見やすいルールブック</title>
     <style>
-/* ===== Reset & Base ===== */
-:root {
-    --bg: #fff8ff;
-    --card: #ffffff;
-    --muted: #7a6b80;
-    --accent: #ff7bb8;
-    --accent-2: #ffd6ec;
-    --glass: rgba(255, 255, 255, 0.6);
-    --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-    --radius: 14px;
-    --max-width: 1100px;
-    --gap: 18px;
-    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
+        /* ===== Reset & Base ===== */
+        :root {
+            --bg: #fff8ff;
+            --card: #ffffff;
+            --muted: #7a6b80;
+            --accent: #ff7bb8;
+            --accent-2: #ffd6ec;
+            --glass: rgba(255, 255, 255, 0.6);
+            --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            --radius: 14px;
+            --max-width: 1100px;
+            --gap: 18px;
+            font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
 
-* {
-    box-sizing: border-box;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 28px 16px;
-    background: linear-gradient(180deg, var(--bg), #fff);
-    color: #2b2430;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 16px;
-    line-height: 1.5;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: var(--gap);
-}
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 28px 16px;
+            background: linear-gradient(180deg, var(--bg), #fff);
+            color: #2b2430;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: var(--gap);
+        }
 
-/* ===== Layout wrapper ===== */
-.wrap {
-    width: 100%;
-    max-width: var(--max-width);
-    display: grid;
-    grid-template-columns: 1fr; /* モバイルは単一カラム */
-    gap: 24px;
-    align-items: start;
-}
+        /* ===== Layout wrapper ===== */
+        .wrap {
+            width: 100%;
+            max-width: var(--max-width);
+            display: grid;
+            grid-template-columns: 1fr;
+            /* モバイルは単一カラム */
+            gap: 24px;
+            align-items: start;
+        }
 
-/* ===== Sidebar ===== */
-.sidebar {
-    background: linear-gradient(180deg, var(--accent-2), #fff);
-    border-radius: var(--radius);
-    padding: 18px;
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    /* スクロールは必要なら入れる */
-    max-height: none;
-    position: relative;
-    overflow: visible;
-}
+        /* ===== Sidebar ===== */
+        .sidebar {
+            background: linear-gradient(180deg, var(--accent-2), #fff);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            /* スクロールは必要なら入れる */
+            max-height: none;
+            position: relative;
+            overflow: visible;
+        }
 
-/* sidebarを固定表示はデスクトップだけに */
-@media screen and (min-width: 980px) {
-    .wrap {
-        grid-template-columns: 300px 1fr;
-    }
-    .sidebar {
-        position: sticky;
-        top: 28px;
-        height: calc(100vh - 56px);
-        overflow-y: auto;
-    }
-}
+        /* sidebarを固定表示はデスクトップだけに */
+        @media screen and (min-width: 980px) {
+            .wrap {
+                grid-template-columns: 300px 1fr;
+            }
 
-/* ===== Logo ===== */
-.logo {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 12px;
-}
+            .sidebar {
+                position: sticky;
+                top: 28px;
+                height: calc(100vh - 56px);
+                overflow-y: auto;
+            }
+        }
 
-.logo .dot {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, var(--accent), #ff9ad1);
-    box-shadow: 0 6px 20px rgba(255, 123, 184, 0.12), inset 0 -6px 20px rgba(255, 255, 255, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 700;
-    font-size: 20px;
-    flex-shrink: 0;
-}
+        /* ===== Logo ===== */
+        .logo {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
 
-.logo h1 {
-    font-size: 16px;
-    margin: 0;
-    line-height: 1.2;
-}
+        .logo .dot {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent), #ff9ad1);
+            box-shadow: 0 6px 20px rgba(255, 123, 184, 0.12), inset 0 -6px 20px rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
 
-.desc {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 6px;
-}
+        .logo h1 {
+            font-size: 16px;
+            margin: 0;
+            line-height: 1.2;
+        }
 
-/* ===== Controls ===== */
-.controls {
-    margin-top: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+        .desc {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 6px;
+        }
 
-.search {
-    display: flex;
-    gap: 8px;
-}
+        /* ===== Controls ===== */
+        .controls {
+            margin-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-.search input {
-    flex: 1;
-    padding: 10px 12px;
-    border-radius: 12px;
-    border: 1px solid rgba(43, 36, 48, 0.08);
-    background: transparent;
-    outline: none;
-    font-size: 14px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
-    transition: border-color 0.3s ease;
-}
+        .search {
+            display: flex;
+            gap: 8px;
+        }
 
-.search input:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 8px var(--accent);
-}
+        .search input {
+            flex: 1;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(43, 36, 48, 0.08);
+            background: transparent;
+            outline: none;
+            font-size: 14px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            transition: border-color 0.3s ease;
+        }
 
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 10px;
-    border-radius: 10px;
-    border: none;
-    background: var(--accent);
-    color: white;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    box-shadow: 0 6px 16px rgba(255, 123, 184, 0.14);
-    transition: background-color 0.3s ease;
-}
+        .search input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+        }
 
-.btn:hover {
-    background: #ff5fae;
-}
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: none;
+            background: var(--accent);
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(255, 123, 184, 0.14);
+            transition: background-color 0.3s ease;
+        }
 
-.btn.ghost {
-    background: transparent;
-    color: var(--accent);
-    border: 1px solid rgba(255, 123, 184, 0.12);
-    box-shadow: none;
-}
+        .btn:hover {
+            background: #ff5fae;
+        }
 
-.tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 6px;
-}
+        .btn.ghost {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid rgba(255, 123, 184, 0.12);
+            box-shadow: none;
+        }
 
-.tag {
-    font-size: 13px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    background: white;
-    border: 1px solid rgba(43, 36, 48, 0.06);
-    cursor: pointer;
-    user-select: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 6px;
+        }
 
-.tag:hover {
-    background: var(--accent-2);
-    border-color: var(--accent);
-}
+        .tag {
+            font-size: 13px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: white;
+            border: 1px solid rgba(43, 36, 48, 0.06);
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-.tag.active {
-    background: var(--accent);
-    color: white;
-    border: none;
-    box-shadow: 0 6px 16px rgba(255, 123, 184, 0.12);
-}
+        .tag:hover {
+            background: var(--accent-2);
+            border-color: var(--accent);
+        }
 
-/* ===== Main area ===== */
-.main {
-    min-height: 70vh;
-    background: linear-gradient(180deg, #fff, rgba(255, 250, 255, 0.9));
-    border-radius: var(--radius);
-    padding: 20px;
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(0, 0, 0, 0.03);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
+        .tag.active {
+            background: var(--accent);
+            color: white;
+            border: none;
+            box-shadow: 0 6px 16px rgba(255, 123, 184, 0.12);
+        }
 
-/* ===== Topbar ===== */
-.topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-}
+        /* ===== Main area ===== */
+        .main {
+            min-height: 70vh;
+            background: linear-gradient(180deg, #fff, rgba(255, 250, 255, 0.9));
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-.stats {
-    font-size: 13px;
-    color: var(--muted);
-}
+        /* ===== Topbar ===== */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
 
-.controls-compact {
-    display: flex;
-    gap: 8px;
-}
+        .stats {
+            font-size: 13px;
+            color: var(--muted);
+        }
 
-/* ===== Rule list ===== */
-.list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 14px;
-    margin-top: 6px;
-}
+        .controls-compact {
+            display: flex;
+            gap: 8px;
+        }
 
-.rule {
-    background: var(--card);
-    border-radius: 12px;
-    padding: 14px;
-    box-shadow: 0 8px 24px rgba(63, 43, 70, 0.04);
-    border: 1px solid rgba(43, 36, 48, 0.04);
-    transition: transform .12s ease, box-shadow .12s ease;
-}
+        /* ===== Rule list ===== */
+        .list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 14px;
+            margin-top: 6px;
+        }
 
-.rule:hover {
-    transform: translateY(-6px);
-}
+        .rule {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: 0 8px 24px rgba(63, 43, 70, 0.04);
+            border: 1px solid rgba(43, 36, 48, 0.04);
+            transition: transform .12s ease, box-shadow .12s ease;
+        }
 
-.rule h3 {
-    margin: 0 0 8px 0;
-    font-size: 16px;
-}
+        .rule:hover {
+            transform: translateY(-6px);
+        }
 
-.meta {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    font-size: 13px;
-    color: var(--muted);
-    flex-wrap: wrap;
-}
+        .rule h3 {
+            margin: 0 0 8px 0;
+            font-size: 16px;
+        }
 
-.badge {
-    background: var(--accent-2);
-    padding: 6px 8px;
-    border-radius: 8px;
-    font-weight: 700;
-    color: #7a2f51;
-    font-size: 12px;
-}
+        .meta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 13px;
+            color: var(--muted);
+            flex-wrap: wrap;
+        }
 
-.content {
-    margin-top: 10px;
-    color: #3a2f3b;
-    line-height: 1.5;
-    font-size: 14px;
-}
+        .badge {
+            background: var(--accent-2);
+            padding: 6px 8px;
+            border-radius: 8px;
+            font-weight: 700;
+            color: #7a2f51;
+            font-size: 12px;
+        }
 
-.actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
-}
+        .content {
+            margin-top: 10px;
+            color: #3a2f3b;
+            line-height: 1.5;
+            font-size: 14px;
+        }
 
-.small {
-    font-size: 13px;
-    padding: 8px 10px;
-    border-radius: 10px;
-    border: 1px solid rgba(43, 36, 48, 0.06);
-    background: transparent;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        .actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
 
-.small:hover {
-    background: var(--accent-2);
-}
+        .small {
+            font-size: 13px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(43, 36, 48, 0.06);
+            background: transparent;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-/* ===== Accordion details ===== */
-.more {
-    margin-top: 8px;
-    padding: 12px;
-    border-radius: 10px;
-    background: linear-gradient(180deg, #fff, var(--glass));
-    border: 1px solid rgba(43, 36, 48, 0.03);
-    font-size: 14px;
-    color: #40323f;
-}
+        .small:hover {
+            background: var(--accent-2);
+        }
 
-/* ===== Empty state ===== */
-.empty {
-    padding: 40px;
-    text-align: center;
-    color: var(--muted);
-    font-size: 15px;
-}
+        /* ===== Accordion details ===== */
+        .more {
+            margin-top: 8px;
+            padding: 12px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, #fff, var(--glass));
+            border: 1px solid rgba(43, 36, 48, 0.03);
+            font-size: 14px;
+            color: #40323f;
+        }
 
-/* ===== Responsive adjustments ===== */
-@media (max-width: 980px) {
-    body {
-        padding: 16px 12px;
-    }
+        /* ===== Empty state ===== */
+        .empty {
+            padding: 40px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 15px;
+        }
 
-    .wrap {
-        grid-template-columns: 1fr;
-        padding-bottom: 60px;
-    }
+        /* ===== Responsive adjustments ===== */
+        @media (max-width: 980px) {
+            body {
+                padding: 16px 12px;
+            }
 
-    .sidebar {
-        position: relative;
-        height: auto;
-        order: 2;
-        max-height: none;
-        overflow: visible;
-        padding: 16px 12px;
-        margin-top: 24px;
-        border-radius: var(--radius);
-    }
+            .wrap {
+                grid-template-columns: 1fr;
+                padding-bottom: 60px;
+            }
 
-    .list {
-        grid-template-columns: 1fr;
-    }
-}
+            .sidebar {
+                position: relative;
+                height: auto;
+                order: 2;
+                max-height: none;
+                overflow: visible;
+                padding: 16px 12px;
+                margin-top: 24px;
+                border-radius: var(--radius);
+            }
 
-/* ===== Helper classes ===== */
-.hidden {
-    display: none !important;
-}
+            .list {
+                grid-template-columns: 1fr;
+            }
+        }
 
-.muted {
-    color: var(--muted);
-    font-size: 13px;
-}
+        /* ===== Helper classes ===== */
+        .hidden {
+            display: none !important;
+        }
 
-a.inline {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-    cursor: pointer;
-}
+        .muted {
+            color: var(--muted);
+            font-size: 13px;
+        }
 
-a.inline:hover {
-    text-decoration: underline;
-}
+        a.inline {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
 
+        a.inline:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -418,13 +420,13 @@ a.inline:hover {
             </div>
 
             <section class="list" id="ruleList">
-                <!-- サンプル -->
-                <article class="rule" data-category="勤務・服装" data-tags="制服,無線,勤務" id="rule-1">
-                    <h3>勤務・服装について</h3>
+                <!-- 警察 -->
+                <article class="rule" data-category="勤務・服装" data-tags="警察, 制服,無線,勤務" id="rule-1">
+                    <h3>【警察】勤務・服装について</h3>
                     <div class="meta">
                         <div class="badge">勤務・服装</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 制服, 無線, 出勤</div>
+                        <div class="muted">タグ: 警察, 制服, 無線, 出勤</div>
                     </div>
                     <div class="content">
                         警察勤務に関わる服装や出勤、無線の基本ルールについて。
@@ -446,8 +448,8 @@ a.inline:hover {
                     </div>
                 </article>
 
-                <article class="rule" data-category="バグ対応" data-tags="バグ,罰金,チェイス" id="rule-2">
-                    <h3>バグ時の対応</h3>
+                <article class="rule" data-category="バグ対応" data-tags="警察, バグ,罰金,チェイス" id="rule-2">
+                    <h3>【警察】バグ時の対応</h3>
                     <div class="meta">
                         <div class="badge">バグ対応</div>
                         <div>更新: 2025-8-10</div>
@@ -467,12 +469,12 @@ a.inline:hover {
                 </article>
 
 
-                <article class="rule" data-category="車両・チェイス" data-tags="車両,チェイス,サイレン" id="rule-2">
-                    <h3>警察車両・チェイスに関するルール</h3>
+                <article class="rule" data-category="車両・チェイス" data-tags="警察, 車両,チェイス,サイレン" id="rule-2">
+                    <h3>【警察】車両・チェイスに関するルール</h3>
                     <div class="meta">
                         <div class="badge">車両・チェイス</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 車両, チェイス, サイレン</div>
+                        <div class="muted">タグ: 警察, 車両, チェイス, サイレン</div>
                     </div>
                     <div class="content">
                         警察車両の取り扱いやチェイス時の行動について。
@@ -494,12 +496,12 @@ a.inline:hover {
                     </div>
                 </article>
 
-                <article class="rule" data-category="副業・アルバイト" data-tags="副業,アルバイト,イベント" id="rule-4">
-                    <h3>副業・アルバイトについて</h3>
+                <article class="rule" data-category="副業・アルバイト" data-tags="警察, 副業,アルバイト,イベント" id="rule-4">
+                    <h3>【警察】副業・アルバイトについて</h3>
                     <div class="meta">
                         <div class="badge">副業・アルバイト</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 副業, アルバイト, イベント</div>
+                        <div class="muted">タグ: 警察, 副業, アルバイト, イベント</div>
                     </div>
                     <div class="actions">
                         <button class="small" data-action="toggle">詳しく</button>
@@ -517,12 +519,12 @@ a.inline:hover {
                     </div>
                 </article>
 
-                <article class="rule" data-category="指名手配" data-tags="指名手配,職務質問,罰金" id="rule-6">
-                    <h3>指名手配について</h3>
+                <article class="rule" data-category="指名手配" data-tags="警察, 指名手配,職務質問,罰金" id="rule-6">
+                    <h3>【警察】指名手配について</h3>
                     <div class="meta">
                         <div class="badge">指名手配</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 指名手配, 職務質問, 罰金</div>
+                        <div class="muted">タグ: 警察, 指名手配, 職務質問, 罰金</div>
                     </div>
                     <div class="actions">
                         <button class="small" data-action="toggle">詳しく</button>
@@ -542,12 +544,12 @@ a.inline:hover {
                     </div>
                 </article>
 
-                <article class="rule" data-category="人数制限" data-tags="犯罪,人数" id="rule-7">
-                    <h3>大型の人数制限</h3>
+                <article class="rule" data-category="人数制限" data-tags="警察, 犯罪,人数" id="rule-7">
+                    <h3>【警察】大型の人数制限</h3>
                     <div class="meta">
                         <div class="badge">大型の人数制限について</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 犯罪, 人数制限</div>
+                        <div class="muted">タグ: 警察, 犯罪, 人数制限</div>
                     </div>
                     <div class="actions">
                         <button class="small" data-action="toggle">詳しく</button>
@@ -563,12 +565,12 @@ a.inline:hover {
                     </div>
                 </article>
 
-                <article class="rule" data-category="発砲条件" data-tags="発砲,実弾,警告" id="rule-9">
-                    <h3>発砲条件（実弾使用銃）</h3>
+                <article class="rule" data-category="発砲条件" data-tags="警察, 発砲,実弾,警告" id="rule-9">
+                    <h3>【警察】発砲条件（実弾使用銃）</h3>
                     <div class="meta">
                         <div class="badge">発砲条件</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 発砲, 実弾, 警告</div>
+                        <div class="muted">タグ: 警察, 発砲, 実弾, 警告</div>
                     </div>
                     <div class="actions">
                         <button class="small" data-action="toggle">詳しく</button>
@@ -588,12 +590,12 @@ a.inline:hover {
                     </div>
                 </article>
 
-                <article class="rule" data-category="麻薬犯罪対応" data-tags="麻薬,逮捕,テーザー" id="rule-10">
-                    <h3>麻薬犯罪対応</h3>
+                <article class="rule" data-category="麻薬犯罪対応" data-tags="警察, 麻薬,逮捕,テーザー" id="rule-10">
+                    <h3>【警察】麻薬犯罪対応</h3>
                     <div class="meta">
                         <div class="badge">麻薬犯罪</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 麻薬, 逮捕, テーザー</div>
+                        <div class="muted">タグ: 警察, 麻薬, 逮捕, テーザー</div>
                     </div>
                     <div class="actions">
                         <button class="small" data-action="toggle">詳しく</button>
@@ -613,12 +615,12 @@ a.inline:hover {
                     </div>
                 </article>
 
-                <article class="rule" data-category="持ち物検査" data-tags="持ち物検査,罰金,チェイス" id="rule-11">
-                    <h3>持ち物検査</h3>
+                <article class="rule" data-category="持ち物検査" data-tags="警察, 持ち物検査,罰金,チェイス" id="rule-11">
+                    <h3>【警察】持ち物検査</h3>
                     <div class="meta">
                         <div class="badge">持ち物検査</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 持ち物検査, 罰金, チェイス</div>
+                        <div class="muted">タグ: 警察, 持ち物検査, 罰金, チェイス</div>
                     </div>
                     <div class="actions">
                         <button class="small" data-action="toggle">詳しく</button>
@@ -633,12 +635,12 @@ a.inline:hover {
                     </div>
                 </article>
 
-                <article class="rule" data-category="車両押収" data-tags="押収,車両,インパウンド" id="rule-12">
-                    <h3>車両押収（インパウンド）</h3>
+                <article class="rule" data-category="車両押収" data-tags="警察, 押収,車両,インパウンド" id="rule-12">
+                    <h3>【警察】車両押収（インパウンド）</h3>
                     <div class="meta">
                         <div class="badge">車両押収</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 押収, 車両, インパウンド</div>
+                        <div class="muted">タグ: 警察, 押収, 車両, インパウンド</div>
                     </div>
                     <div class="actions">
                         <button class="small" data-action="toggle">詳しく</button>
@@ -654,12 +656,12 @@ a.inline:hover {
                     </div>
                 </article>
 
-                <article class="rule" data-category="ヘリコプター" data-tags="ヘリコプター,パトロール,武器" id="rule-13">
-                    <h3>ヘリコプターの利用</h3>
+                <article class="rule" data-category="ヘリコプター" data-tags="警察, ヘリコプター,パトロール,武器" id="rule-13">
+                    <h3>【警察】ヘリコプターの利用</h3>
                     <div class="meta">
                         <div class="badge">ヘリコプター</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: ヘリコプター, パトロール, 武器</div>
+                        <div class="muted">タグ:警察, ヘリコプター, パトロール, 武器</div>
                     </div>
                     <div class="actions">
                         <button class="small" data-action="toggle">詳しく</button>
@@ -676,12 +678,12 @@ a.inline:hover {
                     </div>
                 </article>
 
-                <article class="rule" data-category="犯罪者の役割" data-tags="ピック,罰金,刑務所" id="rule-14">
-                    <h3>ピック役について</h3>
+                <article class="rule" data-category="犯罪者の役割" data-tags="警察, ピック,罰金,刑務所" id="rule-14">
+                    <h3>【警察】ピック役について</h3>
                     <div class="meta">
                         <div class="badge">ピック役について</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: ピック, 罰金, 刑務所</div>
+                        <div class="muted">タグ: 警察, ピック, 罰金, 刑務所</div>
                     </div>
                     <div class="actions">
                         <button class="small" data-action="toggle">詳しく</button>
@@ -696,12 +698,12 @@ a.inline:hover {
                     </div>
                 </article>
 
-                <article class="rule" data-category="犯罪対応・処罰" data-tags="指名手配,発砲,罰金" id="rule-3">
-                    <h3>ロケットランチャー、グレネードについて</h3>
+                <article class="rule" data-category="ロケットランチャー、グレネード" data-tags=" 警察, ロケットランチャー, グレネード" id="rule-3">
+                    <h3>【警察】ロケットランチャー、グレネードについて</h3>
                     <div class="meta">
                         <div class="badge">犯罪対応</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: ロケットランチャー, グレネード</div>
+                        <div class="muted">タグ: 警察, ロケットランチャー, グレネード</div>
                     </div>
                     <div class="content">
                         ロケットランチャー、グレネードについての詳細ルール。
@@ -720,12 +722,12 @@ a.inline:hover {
                     </div>
                 </article>
 
-                <article class="rule" data-category="横取り" data-tags="刑務所送り,インパウンド" id="rule-3">
-                    <h3>横取りについて</h3>
+                <article class="rule" data-category="横取り" data-tags="警察, 刑務所送り,インパウンド" id="rule-3">
+                    <h3>【警察】横取りについて</h3>
                     <div class="meta">
                         <div class="badge">横取り</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 刑務所送り, インパウンド</div>
+                        <div class="muted">タグ: 警察, 刑務所送り, インパウンド</div>
                     </div>
                     <div class="content">
                         横取り行為に関するルールです。
@@ -743,12 +745,12 @@ a.inline:hover {
                     </div>
                 </article>
 
-                <article class="rule" data-category="セクハラ" data-tags="発砲,テーザー,刑務所送り" id="rule-4">
-                    <h3>セクハラについて</h3>
+                <article class="rule" data-category="セクハラ" data-tags="警察,発砲,テーザー,刑務所送り" id="rule-4">
+                    <h3>【警察】セクハラについて</h3>
                     <div class="meta">
                         <div class="badge">セクハラ</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 発砲, テーザー, 刑務所送り</div>
+                        <div class="muted">タグ:警察, 発砲, テーザー, 刑務所送り</div>
                     </div>
                     <div class="content">
                         セクハラ行為とその対応についてのルールです。
@@ -768,12 +770,12 @@ a.inline:hover {
                     </div>
                 </article>
 
-                <article class="rule" data-category="警察車両窃盗罪" data-tags="窃盗,発砲,刑務所送り" id="rule-5">
-                    <h3>警察車両窃盗罪について</h3>
+                <article class="rule" data-category="警察車両窃盗罪" data-tags="警察,窃盗,発砲,刑務所送り" id="rule-5">
+                    <h3>【警察】警察車両窃盗罪について</h3>
                     <div class="meta">
                         <div class="badge">警察車両窃盗罪</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 窃盗, 発砲, 刑務所送り</div>
+                        <div class="muted">タグ:警察, 窃盗, 発砲, 刑務所送り</div>
                     </div>
                     <div class="content">
                         警察車両の窃盗に関するルールと対応について。
@@ -795,13 +797,12 @@ a.inline:hover {
                     </div>
                 </article>
 
-
-                <article class="rule" data-category="抗争対応" data-tags="抗争,出動制限" id="rule-6">
-                    <h3>抗争時の対応について</h3>
+                <article class="rule" data-category="抗争対応" data-tags="警察,抗争,出動制限" id="rule-6">
+                    <h3>【警察】抗争時の対応について</h3>
                     <div class="meta">
                         <div class="badge">抗争対応</div>
                         <div>更新: 2025-8-10</div>
-                        <div class="muted">タグ: 抗争, 出動制限</div>
+                        <div class="muted">タグ:警察, 抗争, 出動制限</div>
                     </div>
                     <div class="content">
                         抗争が街で発生している場合の警察の出動ルールです。
@@ -814,6 +815,216 @@ a.inline:hover {
                     <div class="more hidden">
                         <ol>
                             <li>原則として、警察は街で抗争が起きている間は抗争が終わるまで出動しません。</li>
+                        </ol>
+                    </div>
+                </article>
+                <!-- /警察 -->
+                <!-- 救急隊 -->
+                <article class="rule" data-category="役割・基本事項" data-tags="救急隊, 役割, 基本" id="rule-role-basic-1">
+                    <h3>【救急隊】基本事項</h3>
+                    <div class="meta">
+                        <div class="badge">役割・基本事項</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 救急隊, 役割, 基本</div>
+                    </div>
+                    <div class="content">
+                        救急隊の基本的な役割や犯罪禁止についての説明。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>救急隊は街のケガやダウンした人を治す仕事です。</li>
+                            <li>救急隊は犯罪禁止で、違反すると罰金処分の可能性があります。</li>
+                            <li>主な収入源は日給と治療成功報酬です。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="勤務・服装・出勤" data-tags="救急隊, 制服, 出勤, 服装" id="rule-work-attire-1">
+                    <h3>【救急隊】勤務・服装・出勤について</h3>
+                    <div class="meta">
+                        <div class="badge">勤務・服装・出勤</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 救急隊, 制服, 出勤, 服装</div>
+                    </div>
+                    <div class="content">
+                        救急隊の勤務時の服装ルールと出勤に関する基本事項。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>出勤時は必ず救急隊の制服を着用してください。制服以外は禁止です。</li>
+                            <li>退勤時は必ず私服で活動してください。</li>
+                            <li>出勤は病院内で制服に着替え、救急隊用車両で出動してください。</li>
+                            <li>出勤以外での治療行為は禁止です。</li>
+                            <li>救急隊アイテムの販売・譲渡は禁止。出勤時以外の使用も禁止。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="無線・コミュニケーション" data-tags="救急隊, 無線, コミュニケーション"
+                    id="rule-radio-comm-1">
+                    <h3>【救急隊】無線・コミュニケーションについて</h3>
+                    <div class="meta">
+                        <div class="badge">無線・コミュニケーション</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 救急隊, 無線, コミュニケーション</div>
+                    </div>
+                    <div class="content">
+                        無線の使い方やコミュニケーションルールについて。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>救急隊の無線番号は「1番」。出勤していない場合は無線に入れません。</li>
+                            <li>出勤したら無線で元気に挨拶をしましょう。</li>
+                            <li>緊急時は無線で誰かが話している時に被せないよう注意しましょう。</li>
+                            <li>市民の殴り合い等に立ち会った時は無線で仲間に伝えましょう。</li>
+                            <li>無線で取得した情報や内部情報の口外は禁止です。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="治療・アイテム" data-tags="救急隊, 治療, アイテム" id="rule-treatment-items-1">
+                    <h3>【救急隊】治療・アイテムについて</h3>
+                    <div class="meta">
+                        <div class="badge">治療・アイテム</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 救急隊, 治療, アイテム</div>
+                    </div>
+                    <div class="content">
+                        治療行為のルールと使用可能なアイテムについて。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>空腹・水分値を満たすための治療は禁止です。</li>
+                            <li>金銭の発生しない治療は禁止です。</li>
+                            <li>主な治療アイテム：医療キット、除細動器、鎮静剤。</li>
+                            <li>症状別アイテム：ピンセット（銃創）、アイスパック（打撲）、やけど軟膏（火傷）、縫合キット（傷）。</li>
+                            <li>蘇生後は5分間の手上げ説明と運転控えの案内が必要です。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="車両使用" data-tags="救急隊, 車両, サイレン" id="rule-vehicle-use-1">
+                    <h3>【救急隊】車両使用について</h3>
+                    <div class="meta">
+                        <div class="badge">車両使用</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 救急隊, 車両, サイレン</div>
+                    </div>
+                    <div class="content">
+                        救急車両の使用ルールと注意事項。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>現場に向かう際は必ずサイレンとランプを点灯させること。</li>
+                            <li>救急車両以外での出動は禁止（例外として市民の車を使う場合は可）。</li>
+                            <li>車両の放置は禁止。鍵をかけること。</li>
+                            <li>救急車両の救急目的以外での使用は禁止。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="事件対応" data-tags="救急隊, 事件, 指示" id="rule-incident-1">
+                    <h3>【救急隊】事件対応について</h3>
+                    <div class="meta">
+                        <div class="badge">事件対応</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 救急隊, 事件, 指示</div>
+                    </div>
+                    <div class="content">
+                        事件対応時の注意点と行動指針。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>上官の指示に従い身の安全を守ること。</li>
+                            <li>警察や被害者、負傷者の治療に備えること。</li>
+                            <li>警察が複数いる現場でダウン警察がいる場合、無線番号「2番」に入り事件中か確認すること。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="違反行為・禁止事項" data-tags="救急隊, 違反, 罰金, 禁止" id="rule-violation-1">
+                    <h3>【救急隊】違反行為・禁止事項について</h3>
+                    <div class="meta">
+                        <div class="badge">違反行為・禁止事項</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 救急隊, 違反, 罰金, 禁止</div>
+                    </div>
+                    <div class="content">
+                        救急隊での違反行為と禁止されている行為について。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>長時間勤務放置行為は禁止です。</li>
+                            <li>救急隊員の犯罪行為（車両窃盗、薬物生成、武器所持など）禁止。</li>
+                            <li>ギャングや犯罪者に脅されての金銭要求は安全のため従うこと。</li>
+                            <li>無線や内部情報の口外禁止。</li>
+                            <li>ゾンビアタックの奨励は禁止。</li>
+                            <li>警察の位置を教える行為禁止。</li>
+                            <li>救急アイテムの譲渡・販売禁止。</li>
+                            <li>救急車両の乗り捨て・放置は禁止（バグの場合は警察に押収依頼）。</li>
+                            <li>救急隊アイテムを個人スタッシュに入れる行為禁止。</li>
+                            <li>銃の所持・発砲禁止。</li>
+                            <li>犯罪全般禁止。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="応募・採用" data-tags="救急隊, 応募, 採用" id="rule-application-1">
+                    <h3>【救急隊】応募・採用について</h3>
+                    <div class="meta">
+                        <div class="badge">応募・採用</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 救急隊, 応募, 採用</div>
+                    </div>
+                    <div class="content">
+                        救急隊になるための応募条件と採用までの流れ。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>院長・副院長に連絡し、病院で面接後、採用された方のみ救急隊になれます。</li>
+                            <li>過去に犯罪歴のない方（例外あり）が応募可能です。</li>
+                            <li>警察官との同時勤務は禁止（市役所アルバイトは可）。</li>
+                            <li>体験期間は先輩と行動し業務に慣れる期間です。</li>
                         </ol>
                     </div>
                 </article>
