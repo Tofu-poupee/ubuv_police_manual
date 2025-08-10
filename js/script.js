@@ -10,7 +10,7 @@ const emptyState = $('#emptyState');
 let activeTag = '__all';
 
 const tagCategories = {
-    "ジョブ別タグ": ["警察", "救急隊", "メカニック", "飲食"],
+    "ジョブ別タグ": ["全体","警察", "救急隊", "メカニック", "飲食"],
 };
 
 function buildTags() {
@@ -139,3 +139,4 @@ $('#downloadJson').addEventListener('click', () => {
 
 buildTags();
 filterRules();
+
