@@ -169,6 +169,76 @@ body {
     color: var(--accent);
 }
 
+/* ===== カテゴリー単位のコンテナ ===== */
+.category {
+    margin-bottom: 16px;
+    border: 1px solid rgba(43, 36, 48, 0.1);
+    border-radius: var(--radius);
+    background: var(--card);
+    box-shadow: var(--shadow);
+}
+
+/* カテゴリーヘッダー */
+.category-header {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 12px 16px;
+    user-select: none;
+    color: var(--accent);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(43, 36, 48, 0.1);
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* 矢印アイコン */
+.category-header::after {
+    content: "▶";
+    transition: transform 0.3s ease;
+    font-size: 14px;
+    color: var(--accent);
+}
+
+/* 開いている時の矢印回転 */
+.category.open .category-header::after {
+    transform: rotate(90deg);
+}
+
+/* タグ群のコンテナ */
+.category-tags {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+/* 開いている時 */
+.category.open .category-tags {
+    max-height: 180px;
+    /* 好みで調整してください */
+    overflow-y: auto;
+    padding: 12px 16px;
+}
+
+/* スクロールバーのスタイル（PC向け少し見た目良く） */
+.category-tags::-webkit-scrollbar {
+    width: 8px;
+}
+
+.category-tags::-webkit-scrollbar-thumb {
+    background: var(--accent-2);
+    border-radius: 4px;
+}
+
+.category-tags::-webkit-scrollbar-track {
+    background: var(--card);
+}
+
 /* ===== Tags ===== */
 .tags {
     display: flex;
@@ -416,7 +486,7 @@ a.inline:hover {
 }
 
 @media (min-width: 600px) {
-    .sp{
+    .sp {
         display: none;
     }
 }
