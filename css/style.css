@@ -415,13 +415,18 @@ a.inline:hover {
     color: red;
 }
 
+@media (min-width: 600px) {
+    .sp{
+        display: none;
+    }
+}
+
 @media (max-width: 600px) {
     .page-header h1 {
-        font-size: 20px;
+        font-size: 19px;
     }
 
     .header-span {
         font-size: 10px;
     }
 }
-
