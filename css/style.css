@@ -325,6 +325,10 @@ body {
     padding: 12px;
 }
 
+ol li ul {
+    padding-bottom: 3%;
+}
+
 /* ===== Empty state ===== */
 .empty {
     color: var(--muted);
@@ -420,3 +424,4 @@ a.inline:hover {
         font-size: 10px;
     }
 }
+
