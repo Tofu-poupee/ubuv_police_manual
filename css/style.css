@@ -515,7 +515,8 @@ a.inline:hover {
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 10000;
+  z-index: 99999;   /* 最前面に固定 */
+  overflow: auto;   /* スマホでもはみ出しはスクロール可 */
 }
 
 /* :target を利用して拡大表示 */
@@ -523,7 +524,7 @@ a.inline:hover {
   display: flex;
 }
 
-/* 拡大画像（PC標準） */
+/* 拡大画像 */
 .zoom-overlay img {
   max-width: 90%;
   max-height: 90%;
@@ -536,13 +537,19 @@ a.inline:hover {
 /* ===== スマホ向け調整 ===== */
 @media (max-width: 768px) {
   .zoom-overlay {
-    align-items: flex-start;   /* 上詰め表示に変更 */
-    padding-top: 10vh;         /* 少し下に余白をつける */
+    align-items: flex-start;
+    padding: 5vh 0;      /* 上下に余白を確保 */
   }
 
   .zoom-overlay img {
-    max-width: 95%;            /* 横幅優先で広く使う */
-    max-height: 80vh;          /* 縦のはみ出し防止 */
+    max-width: 95%;
+    max-height: 85vh;    /* 画面に収める */
   }
 }
+
+/* ===== スクロール防止（オーバーレイが開いている時） ===== */
+body:has(.zoom-overlay:target) {
+  overflow: hidden;
+}
+
 
