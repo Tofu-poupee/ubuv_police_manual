@@ -501,6 +501,7 @@ a.inline:hover {
     }
 }
 
+/* ===== Click-to-Zoom (固定式標準) ===== */
 .zoomable-link img {
   cursor: zoom-in;
   transition: transform 0.3s ease;
@@ -522,11 +523,26 @@ a.inline:hover {
   display: flex;
 }
 
-/* 拡大画像 */
+/* 拡大画像（PC標準） */
 .zoom-overlay img {
   max-width: 90%;
   max-height: 90%;
   box-shadow: 0 12px 32px rgba(0,0,0,0.5);
   cursor: zoom-out;
   border-radius: 8px;
+  object-fit: contain;
 }
+
+/* ===== スマホ向け調整 ===== */
+@media (max-width: 768px) {
+  .zoom-overlay {
+    align-items: flex-start;   /* 上詰め表示に変更 */
+    padding-top: 10vh;         /* 少し下に余白をつける */
+  }
+
+  .zoom-overlay img {
+    max-width: 95%;            /* 横幅優先で広く使う */
+    max-height: 80vh;          /* 縦のはみ出し防止 */
+  }
+}
+
