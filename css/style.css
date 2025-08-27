@@ -500,3 +500,31 @@ a.inline:hover {
         font-size: 10px;
     }
 }
+
+.item-images {
+  overflow: visible;
+}
+
+.item-images img,
+img.zoomable {
+  cursor: zoom-in;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* While clicking (mouse/touch down), enlarge the image in place */
+.item-images img:active,
+img.zoomable:active {
+  transform: scale(2);
+  position: relative;
+  z-index: 9999;
+  cursor: zoom-out;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+}
+
+/* Optional: small safety for narrow containers so the scaled image isn't clipped */
+.item-images img:active {
+  max-width: none;
+}
+
