@@ -501,30 +501,31 @@ a.inline:hover {
     }
 }
 
-.item-images {
-  overflow: visible;
-}
-
-.item-images img,
-img.zoomable {
+.zoomable-link img {
   cursor: zoom-in;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  transform-origin: center center;
-  will-change: transform;
+  transition: transform 0.3s ease;
 }
 
-/* While clicking (mouse/touch down), enlarge the image in place */
-.item-images img:active,
-img.zoomable:active {
-  transform: scale(2);
-  position: relative;
-  z-index: 9999;
+/* 拡大時のオーバーレイ */
+.zoom-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+/* :target を利用して拡大表示 */
+.zoom-overlay:target {
+  display: flex;
+}
+
+/* 拡大画像 */
+.zoom-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
   cursor: zoom-out;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
 }
-
-/* Optional: small safety for narrow containers so the scaled image isn't clipped */
-.item-images img:active {
-  max-width: none;
-}
-
