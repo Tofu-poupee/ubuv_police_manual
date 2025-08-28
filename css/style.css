@@ -23,15 +23,9 @@
 
 html,
 body {
-    align-items: flex-start;
     background: linear-gradient(180deg, var(--bg), #e6f0ff);
     color: #2b2430;
-    display: flex;
-    flex-wrap: wrap;
     font-size: 16px;
-    gap: var(--gap);
-    height: 100%;
-    justify-content: center;
     line-height: 1.5;
     margin: 0;
     padding: 1px 16px;
@@ -503,53 +497,87 @@ a.inline:hover {
 
 /* ===== Click-to-Zoom (固定式標準) ===== */
 .zoomable-link img {
-  cursor: zoom-in;
-  transition: transform 0.3s ease;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
 }
 
 /* 拡大時に表示される全画面オーバーレイ */
 .zoom-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;   /* 最前面に固定 */
-  overflow: auto;   /* スマホでもはみ出しはスクロール可 */
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+
+    overflow: auto;
 }
 
 /* :target を利用して拡大表示 */
 .zoom-overlay:target {
-  display: flex;
+    display: flex;
 }
 
 /* 拡大画像 */
 .zoom-overlay img {
-  max-width: 90%;
-  max-height: 90%;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
-  cursor: zoom-out;
-  border-radius: 8px;
-  object-fit: contain;
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    cursor: zoom-out;
+    border-radius: 8px;
+    object-fit: contain;
 }
 
 /* ===== スマホ向け調整 ===== */
 @media (max-width: 768px) {
-  .zoom-overlay {
-    align-items: flex-start;
-    padding: 5vh 0;      /* 上下に余白を確保 */
-  }
+    .zoom-overlay {
+        align-items: flex-start;
+        padding: 5vh 0;
+    }
 
-  .zoom-overlay img {
-    max-width: 95%;
-    max-height: 85vh;    /* 画面に収める */
-  }
+    .zoom-overlay img {
+        max-width: 95%;
+        max-height: 85vh;
+    }
 }
 
-/* ===== スクロール防止（オーバーレイが開いている時） ===== */
+//* ===== PC版の拡大画像調整（クリック拡大維持） ===== */
+@media (min-width: 981px) {
+    .zoom-overlay {
+        display: none; 
+        position: fixed;
+        inset: 0;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        z-index: 99999;
+        background: rgba(0,0,0,0.7);
+        overflow: hidden; 
+    }
+
+    /* :targetで表示 */
+    .zoom-overlay:target {
+        display: flex;
+    }
+
+    .zoom-overlay img {
+        max-width: 100vw; 
+        max-height: 100vh;  
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        margin: auto;
+        border-radius: 8px;
+        cursor: zoom-out;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+    }
+}
+
+
+/* ===== スクロール防止（安全版） ===== */
+html:has(.zoom-overlay:target),
 body:has(.zoom-overlay:target) {
-  overflow: hidden;
+    overflow: hidden;
+    height: 100%;
 }
-
-
